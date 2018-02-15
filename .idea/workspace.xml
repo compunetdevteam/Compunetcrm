@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9140635c-3f03-4161-9746-dc37ff73a8d3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/compunetcrm/buisnesslogic/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/compunetcrm/buisnesslogic/send_email.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/compunetcrm/buisnesslogic/send_email_asynchronous.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/compunetcrm/migrations/0002_auto_20180214_0050.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/compunetcrm/migrations/0003_customer_customer_type.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/compunetcrm/migrations/0004_auto_20180214_0104.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/compunetcrm/send_sms.py" afterPath="$PROJECT_DIR$/compunetcrm/buisnesslogic/send_sms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compunetcrm/admin.py" afterPath="$PROJECT_DIR$/compunetcrm/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compunetcrm/models.py" afterPath="$PROJECT_DIR$/compunetcrm/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compunetcrm/views.py" afterPath="$PROJECT_DIR$/compunetcrm/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compunetlimitedcrm/settings.py" afterPath="$PROJECT_DIR$/compunetlimitedcrm/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/fileuploadtest.html" afterPath="$PROJECT_DIR$/templates/fileuploadtest.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,8 +32,8 @@
       <file leaf-file-name="fileuploadtest.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/fileuploadtest.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+            <state relative-caret-position="102">
+              <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="8" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -427,8 +416,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/fileuploadtest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+        <state relative-caret-position="102">
+          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="8" selection-end-column="7" />
           <folding />
         </state>
       </provider>
