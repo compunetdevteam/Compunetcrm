@@ -22,7 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
-AFRICAS_TALKING_API_KEY = config('AFRICAS_TALKING_API_KEY')
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'compunetcrm',
     'import_export',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,12 @@ STATIC_URL = '/static/'
 #######Packages Configurations
 ##Excel Import Export
 IMPORT_EXPORT_USE_TRANSACTIONS = True
+
+
+##### Amazon S3 configs
+AWS_STORAGE_BUCKET_NAME = 'sibtc-static'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'static'

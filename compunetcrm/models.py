@@ -8,6 +8,16 @@ SEX_CHOICE = (
         ('FEMALE', "FEMALE"),
     )
 
+CUSTOMER_TYPE = (
+        ('SCHOOL OWNER', "SCHOOL OWNER"),
+        ('BSC STUDENT', "BSC STUDENT"),
+        ('SIWES STUDENT', "SIWES STUDENT"),
+        ('WEEKEND TRAINING', "WEEKEND TRAINING"),
+        ('GENERAL ENQUIRIES', "GENERAL ENQUIRIES"),
+        ('INTERN', "INTERN"),
+        ('COMPUNET STAFF', "COMPUNET STAFF"),
+    )
+
 STATE_CHOICE = (('ABIA', 'ABIA'), ('ADAMAWA', 'ADAMAWA'), ('AKWAIBOM', 'AKWAIBOM'), ('ANAMBRA', 'ANAMBRA'),
           ('BAUCHI', 'BAUCHI'), ('BAYELSA', 'BAYELSA'), ('BENUE', 'BENUE'), ('BORNO', 'BORNO'),
           ('CROSSRIVERS', 'CROSSRIVERS'), ('DELTA','DELTA'), ('EBONYI','EBONYI'), ('EDO','EDO'),
@@ -30,3 +40,7 @@ class Customer(models.Model):
     email = models.EmailField(verbose_name='E-mail', max_length=100)
     communication_means1 = models.NullBooleanField(verbose_name='Use Phone As Prefered Means Of Communication')
     communication_means2 = models.NullBooleanField(verbose_name='Use E-mail As Prefered Means Of Communication')
+    customer_type = models.CharField(verbose_name="Customer Type", max_length=10, choices=CUSTOMER_TYPE,blank=True)
+
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name + ' ' + self.customer_type

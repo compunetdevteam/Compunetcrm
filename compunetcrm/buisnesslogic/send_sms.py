@@ -2,7 +2,7 @@ from decouple import config
 from africastalking.AfricasTalkingGateway import AfricasTalkingGateway, AfricasTalkingGatewayException
 
 # Specify your login credentials
-username = "onyeoma"
+username = config('AFRICAS_TALKING_API_USERNAME')
 apikey = config('AFRICAS_TALKING_API_KEY')
 
 # Please ensure you include the country code (+254 for Kenya in this case)
