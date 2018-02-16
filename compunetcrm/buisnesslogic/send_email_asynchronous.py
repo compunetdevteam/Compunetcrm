@@ -12,7 +12,6 @@ to_email = Email("test@example.com")
 content = Content("text/html", 'Take action now')
 
 
-
 def send_mail_asynchronous(request):
     content = Content("text/plain", "This is asynchronous sending test.")
 

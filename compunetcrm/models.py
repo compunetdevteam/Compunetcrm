@@ -44,3 +44,10 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name + ' ' + self.customer_type
+
+
+class UploadedImage(models.Model):
+    description = models.CharField(max_length=255, blank=True)
+    document = models.FileField(upload_to='documents/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    uploaded_by = models.CharField(max_length=25)
