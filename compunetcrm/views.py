@@ -1,5 +1,4 @@
 from http.client import HTTPResponse
-
 from django.shortcuts import render, redirect
 from compunetcrm.buisnesslogic import send_email
 from compunetcrm.forms.imageupload import ImageUploadForm
@@ -36,7 +35,6 @@ def send_email_form(request):
                 content = Content("text/html", body)
                 mail = Mail(from_email, subject, to_email, content)
                 mail.template_id = config('SENDGRID_TEMPLATE_ID')
-                mail.per
                 response = sg.client.mail.send.post(request_body=mail.get())
                 if response.status == 202:
                     status = 'Delivered'
