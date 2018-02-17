@@ -1,5 +1,4 @@
 import sendgrid
-from future.moves import urllib
 from decouple import config
 from sendgrid.helpers.mail import *
 
@@ -19,12 +18,6 @@ def send_email(request):
     print(response.status_code)
     print(response.body)
     print(response.headers)
-
-
-
-
-
-
 
 
 def send_email(request):

@@ -47,7 +47,19 @@ class Customer(models.Model):
 
 
 class UploadedImage(models.Model):
-    description = models.CharField(max_length=255, blank=True)
-    document = models.FileField(upload_to='documents/')
+    image = models.FileField(upload_to='documents/')
+    image_description = models.CharField(max_length=255, blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     uploaded_by = models.CharField(max_length=25)
+    image_text_xandy_cordinate = models.CharField(max_length=300)
+    image_url = models.CharField(max_length=200)
+
+
+class SentMail(models.Model):
+    sent_to = models.CharField(max_length=255, blank=True)
+    image_address = models.CharField(max_length=255, blank=True)
+    subject = models.CharField(max_length=255, blank=True)
+    body = models.CharField(max_length=255, blank=True)
+    status = models.CharField(max_length=255, blank=True)
+    from_email = models.CharField(max_length=255, blank=True)
+
