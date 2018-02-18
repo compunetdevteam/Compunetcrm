@@ -11,4 +11,4 @@ class ImageUploadForm(forms.ModelForm):
 class CustomerUploadForm(forms.ModelForm):
     class Meta:
         model = Customer
-        fields = ('image', 'image_description', 'image_text_xandy_cordinate', )
+        fields = ('first_name','last_name','address','customer_type','phone_number','email')

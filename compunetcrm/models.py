@@ -40,7 +40,7 @@ class Customer(models.Model):
     email = models.EmailField(verbose_name='E-mail', max_length=100)
     communication_means1 = models.NullBooleanField(verbose_name='Use Phone As Prefered Means Of Communication')
     communication_means2 = models.NullBooleanField(verbose_name='Use E-mail As Prefered Means Of Communication')
-    customer_type = models.CharField(verbose_name="Customer Type", max_length=10, choices=CUSTOMER_TYPE,blank=True)
+    customer_type = models.CharField(verbose_name="Customer Type", max_length=80, choices=CUSTOMER_TYPE,blank=True)
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name + ' ' + self.customer_type
