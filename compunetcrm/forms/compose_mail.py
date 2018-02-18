@@ -7,4 +7,4 @@ class ComposeEmailForm(forms.Form):
     from_mail = forms.CharField(max_length=300)
     subject = forms.CharField(max_length=200)
     body = forms.CharField(max_length=800)
-    image_name = forms.ModelChoiceField(queryset=UploadedImage.objects.values('image_description'))
+    image_name = forms.ChoiceField(choices=[(choice.pk, choice) for choice in UploadedImage.objects.all()])

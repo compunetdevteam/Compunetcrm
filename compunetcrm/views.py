@@ -22,25 +22,26 @@ def send_email_form(request):
     if request.method == 'POST':
         form = ComposeEmailForm(request.POST)
         if form.is_valid():
-            to = form.cleaned_data['']
-            from_email = form.cleaned_data['']
-            subject = form.cleaned_data['']
-            image_name = form.cleaned_data['']
-            body = form.cleaned_data['']
-            image_url = UploadedImage.objects.get(image_description=image_name).image_url
+            to = form.cleaned_data['to_email']
+            sender = form.cleaned_data['from_mail']
+            subject = form.cleaned_data['subject']
+            image_name = form.cleaned_data['image_name']
+            body = form.cleaned_data['body']
+            image_url = UploadedImage.objects.get(id=int(image_name)).image.path
             ##send mail
             to_split = to.split(',')
-            receipients =[ members for members in to_split]
-            for to_email in receipients:
+            for recipients in to_split:
+                to_email = Email(recipients)
+                from_email = Email(sender)
                 content = Content("text/html", body)
                 ##substituitions
                 mail = Mail(from_email,  subject, to_email, content)
                 mail.template_id = config('SENDGRID_TEMPLATE_ID')
                 response = sg.client.mail.send.post(request_body=mail.get())
-                if response.status == 202:
+                if response.status_code == 202:
                     status = 'Delivered'
-                    SentMail.objects.create(image_address=image_name, subject=subject, body=body, status=status,
-                                            from_email=from_email)
+                    SentMail.objects.create(sent_to=recipients,image_address=image_name, subject=subject, body=body, status=status,
+                                            from_email=sender)
                 else:
                     SentMail.objects.create(image_address=image_name, subject=subject, body=body, status=response.status,
                                             from_email=from_email)
@@ -61,6 +62,10 @@ def upolad_images(request):
     if request.method == 'POST':
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
+            from pprint import pprint
+            pprint(form.cleaned_data['image'].path)
+            pprint(type(form.cleaned_data['image']))
+
             form.save()
             return redirect('home')
     else:
@@ -82,3 +87,5 @@ def add_customer_information(request):
         'form': form
     })
 
+def testing_html(request):
+    return render(request, 'rocket_template/index.html')

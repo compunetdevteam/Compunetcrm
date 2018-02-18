@@ -52,7 +52,10 @@ class UploadedImage(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
     uploaded_by = models.CharField(max_length=25)
     image_text_xandy_cordinate = models.CharField(max_length=300)
-    image_url = models.CharField(max_length=200)
+    image_url = models.CharField(max_length=400)
+
+    def __str__(self):
+        return self.image_description
 
 
 class SentMail(models.Model):
