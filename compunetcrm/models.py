@@ -68,10 +68,10 @@ class SentMail(models.Model):
 
 
 class ImageTextCordinate(models.Model):
-    image = models.ForeignKey(UploadedImage, related_name='Image', on_delete=models.CASCADE)
-    top = models.PositiveIntegerField()
-    right = models.PositiveIntegerField()
-    bottom = models.PositiveIntegerField()
-    left = models.PositiveIntegerField()
-    link = models.CharField(max_length=700, blank=False)
-    alt_text = models.CharField(max_length=400, blank=False)
+    imagelink = models.ForeignKey(UploadedImage, on_delete=models.CASCADE)
+    top = models.DecimalField(max_digits=20, decimal_places=7)
+    right = models.DecimalField(max_digits=20, decimal_places=7)
+    bottom = models.DecimalField(max_digits=20, decimal_places=7)
+    left = models.DecimalField(max_digits=20, decimal_places=7)
+    link = models.CharField(verbose_name="Image URL", max_length=700, blank=False)
+    alt_text = models.CharField(verbose_name="Image Alt Text", max_length=400, blank=False)
