@@ -75,3 +75,6 @@ class ImageTextCordinate(models.Model):
     left = models.DecimalField(max_digits=20, decimal_places=7)
     link = models.CharField(verbose_name="Image URL", max_length=700, blank=False)
     alt_text = models.CharField(verbose_name="Image Alt Text", max_length=400, blank=False)
+
+    def __str__(self):
+        return 'Cordinates For Text Link On' + ' ' + self.imagelink.image_description + ' ' + 'Image'

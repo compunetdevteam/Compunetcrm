@@ -15,14 +15,16 @@ def img_source_substituition(subvalue):
 def get_image_substituitions(id):
 	a = UploadedImage.objects.get(id=id)
 	b = a.imagetextcordinate_set.all()
+	embed_image = []
 	for any in b:
-		embed_image = ''
 		top = str(any.top)
 		right = str(any.right)
 		bottom = str(any.bottom)
 		left = str(any.left)
 		link = str(any.link)
+		true = '<area shape="rect" coords="' + top + ',' + right + ',' + bottom + ',' + left + '"' + ' ' + 'href="' + link + '"' + 'alt="Compunet" / >'
+		embed_image.append(true)
+		embed_image
+	return embed_image
 
-		embed_image += '<area shape="rect" coords="' + top + ',' + right + ',' + bottom + ',' + left + '"' + ' ' + 'href="' + link + '"' + 'alt="Compunet" / >'
-		print(embed_image)
-		return embed_image
+

@@ -15,7 +15,7 @@ sg = sendgrid.SendGridAPIClient(apikey=config('SENDGRID_API_KEY'))
 
 
 def sendmail_template(request):
-    return HttpResponse("all i di of")
+    return HttpResponse("Mail Sent SuccessFully")
 
 
 def send_email_form(request):
@@ -51,6 +51,7 @@ def send_email_form(request):
                 mail.template_id = config('SENDGRID_TEMPLATE_ID')
                 mail.personalizations[0].add_substitution(image_url_substituition)
                 mail.personalizations[0].add_substitution(image_text_cordinate_substituition)
+                print(mail.get())
                 response = sg.client.mail.send.post(request_body=mail.get())
                 if response.status_code == 202:
                     status = 'Delivered'
