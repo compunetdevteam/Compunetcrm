@@ -66,3 +66,12 @@ class SentMail(models.Model):
     status = models.CharField(max_length=255, blank=True)
     from_email = models.CharField(max_length=255, blank=True)
 
+
+class ImageTextCordinate(models.Model):
+    image = models.ForeignKey(UploadedImage, related_name='Image', on_delete=models.CASCADE)
+    top = models.PositiveIntegerField()
+    right = models.PositiveIntegerField()
+    bottom = models.PositiveIntegerField()
+    left = models.PositiveIntegerField()
+    link = models.CharField(max_length=700, blank=False)
+    alt_text = models.CharField(max_length=400, blank=False)

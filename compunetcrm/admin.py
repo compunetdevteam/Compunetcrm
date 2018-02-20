@@ -1,10 +1,10 @@
 from django.contrib import admin
 # from import_export.admin import ImportExportModelAdmin
-from .models import Customer,SentMail,UploadedImage
+from .models import Customer, SentMail, UploadedImage, ImageTextCordinate
 # from import_export import resources
 # Register your models here.
-#admin.site.site_header = '    COMPUNET LIMITED CRM'
-#admin.site.site_title = "     COMPUNET LIMITED CRM"
+admin.site.site_header = '    COMPUNET LIMITED CRM'
+admin.site.site_title = "     COMPUNET LIMITED CRM"
 
 
 # class CustomerResource(resources.ModelResource):
@@ -18,3 +18,4 @@ from .models import Customer,SentMail,UploadedImage
 admin.site.register(Customer)
 admin.site.register(UploadedImage)
 admin.site.register(SentMail)
+admin.site.register(ImageTextCordinate)

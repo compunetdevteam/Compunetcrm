@@ -54,10 +54,6 @@ def send_email_form(request):
     })
 
 
-
-
-
-
 def upolad_images(request):
     if request.method == 'POST':
         form = ImageUploadForm(request.POST, request.FILES)

@@ -14,5 +14,11 @@
       <auth-required>false</auth-required>
       <introspection-schemas>*:main</introspection-schemas>
     </data-source>
+    <data-source name="Django default" uuid="1027c021-29fc-4473-86bd-17452a4ceb02">
+      <database-info product="SQLite" version="3.16.1" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" />
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <auth-required>false</auth-required>
+      <introspection-schemas>*:main</introspection-schemas>
+    </data-source>
   </component>
 </project>

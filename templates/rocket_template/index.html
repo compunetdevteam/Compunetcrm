@@ -22,15 +22,15 @@
     <link rel="apple-touch-icon" sizes="60x60" href="{% static 'img/favicon/apple-icon-60x60.png' %}">
     <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/favicon/apple-icon-72x72.png' %}">
     <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/favicon/apple-icon-76x76.png' %}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{% static "img/favicon/apple-icon-114x114.png"%}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{% static "img/favicon/apple-icon-120x120.png"%}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{% static "img/favicon/apple-icon-144x144.png"%}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{% static "img/favicon/apple-icon-152x152.png"%}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static "img/favicon/apple-icon-180x180.png"%}">
-    <link rel="icon" type="image/png" sizes="192x192"  href="{% static "img/favicon/android-192x192.png"%}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static "img/favicon/favicon-32x32.png"%}">
-    <link rel="icon" type="image/png" sizes="96x96" href="{% static "img/favicon/favicon-96x96.png"%}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static "img/favicon/favicon-16x16.png"%}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/favicon/apple-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'img/favicon/apple-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'img/favicon/apple-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'img/favicon/apple-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'img/favicon/android-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'img/favicon/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static "css/manifest.json"%}">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
@@ -43,8 +43,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
-    <!-- Preloader -->
+  <body>-->
+    <!-- Preloader
     <div class="load-bar">
       <div class="bar"></div>
       <div class="bar"></div>
@@ -86,7 +86,7 @@
           </div><!-- end .nav-top-mobile -->
           <div class="logo ">
             <a class="navbar-brand" href="index.html">
-            <img src="img/logo.png" alt="Rocket Logo">
+            <img src="{% static 'img/logo.png' %}" alt="Rocket Logo">
               <span>Rocket</span>
               <small class="hidden-xs">Raise your standards</small>
             </a>
@@ -99,7 +99,7 @@
               <a class="user-block dropdown-toggle" href="index.html#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
         				<span class="user-name">Hi, James</span>
         				<span class="caret"></span>
-                <img src="img/users/user01.jpg" alt="User image">
+                <img src="{% static 'img/users/user01.jpg' %}" alt="User image">
               </a>
               <ul class="user-profile-dropdown dropdown-menu animated fadeInDown">
                 <li>
@@ -126,7 +126,7 @@
               <a href="index.html#" class="lang dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">EN<span class="caret"></span></a>
               <ul class="lang-dropdown dropdown-menu animated flipInX">
                 <li><a class="lang-item" href="javascript:;">
-                      <img src="img/flags/EN.png" alt="English flag"> English
+                      <img src="{% static 'img/flags/EN.png' %}" alt="English flag"> English
                     </a>
                 </li>
                 <li><a class="lang-item" href="javascript:;">
@@ -182,7 +182,7 @@
               <ul class="messages-dropdown dropdown-menu animated fadeInDown">
                 <li><a class="message-item" href="view-message.html">
                       <span class="message-item-img">
-                        <img src="img/users/user02.jpg" alt="User image">
+                        <img src="{% static 'img/users/user02.jpg' %}" alt="User image">
                       </span>
                       <div class="message-block">
                         <div class="message-item-from">John Doe</div>
@@ -193,7 +193,7 @@
                 </li> 
                 <li><a class="message-item" href="view-message.html">
                       <span class="message-item-img">
-                        <img src="img/users/user03.jpg" alt="User image">
+                        <img src="{% static 'img/users/user03.jpg' %}" alt="User image">
                       </span>
                       <div class="message-block">
                         <div class="message-item-from">Kimbery Yearta</div>
@@ -204,7 +204,7 @@
                 </li>
                 <li><a class="message-item" href="view-message.html">
                       <span class="message-item-img">
-                        <img src="img/users/user04.jpg" alt="User image">
+                        <img src="{% static 'img/users/user04.jpg' %}" alt="User image">
                       </span>
                       <div class="message-block">
                         <div class="message-item-from">Clare Cuenca</div>
@@ -215,7 +215,7 @@
                 </li>
                 <li><a class="message-item" href="view-message.html">
                       <span class="message-item-img">
-                        <img src="img/users/user05.jpg" alt="User image">
+                        <img src="{% static 'img/users/user05.jpg' %}" alt="User image">
                       </span>
                       <div class="message-block">
                         <div class="message-item-from">Brandon Gorby</div>
@@ -420,7 +420,7 @@
                   <li>
                     <a class="employees-item" href="user-profile.html">
                       <span class="employees-item-img">
-                        <img src="img/users/user02.jpg" alt="User image">
+                        <img src="{% static 'img/users/user02.jpg' %}" alt="User image">
                       </span>
                       <div class="employees-block">
                         <div class="employees-name">John Doe
@@ -434,7 +434,7 @@
                   <li>
                     <a class="employees-item" href="user-profile.html">
                       <span class="employees-item-img">
-                        <img src="img/users/user03.jpg" alt="User image">
+                        <img src="{% static 'img/users/user03.jpg' %}" alt="User image">
                       </span>
                       <div class="employees-block">
                         <div class="employees-name">Kimbery Yearta
@@ -448,7 +448,7 @@
                   <li>
                     <a class="employees-item" href="user-profile.html">
                       <span class="employees-item-img">
-                        <img src="img/users/user04.jpg" alt="User image">
+                        <img src="{% static 'img/users/user04.jpg' %}" alt="User image">
                       </span>
                       <div class="employees-block">
                         <div class="employees-name">Clare Cuenca
@@ -462,7 +462,7 @@
                   <li>
                     <a class="employees-item" href="user-profile.html">
                       <span class="employees-item-img">
-                        <img src="img/users/user05.jpg" alt="User image">
+                        <img src="{% static 'img/users/user05.jpg' %}" alt="User image">
                       </span>
                       <div class="employees-block">
                         <div class="employees-name">Brandon Gorby
@@ -667,16 +667,16 @@
       </div>
     </footer><!-- end .nav-bottom -->
 
-    <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-3.2.0.min.js' %}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <!-- Chart js -->
-    <script type="text/javascript" src="js/chart.js/Chart.bundle.min.js"></script>
-    <script type="text/javascript" src="js/chart.js/Chart.min.js"></script>
-    <script type="text/javascript" src="js/chart.js/chartJs-config.js"></script>
+    <script type="text/javascript" src="{% static 'js/chart.js/Chart.bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/chart.js/Chart.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/chart.js/chartJs-config.js' %}"></script>
 
     <!--Custom script -->
-    <script type="text/javascript" src="js/preloader.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="{% static 'js/preloader.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
  </body>
 </html>
