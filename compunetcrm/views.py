@@ -42,8 +42,8 @@ def send_email_form(request):
             image_text_cordinate_substituition = get_text_cordinate_substituitions(image)
 
             ##send mail
-            to_split = to.split(',')
-            for recipients in to_split:
+
+            for recipients in to:
                 to_email = Email(recipients)
                 from_email = Email(sender)
                 content = Content("text/html", body)

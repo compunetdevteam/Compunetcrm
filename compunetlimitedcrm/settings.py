@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'import_export',
     'debug_toolbar',
     'widget_tweaks',
+    'multi_email_field',
     #'storages',
 ]
 ADMIN_VIEW_PERMISSION_MODELS = [
