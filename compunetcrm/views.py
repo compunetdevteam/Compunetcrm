@@ -1,3 +1,4 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 import sendgrid
@@ -6,7 +7,7 @@ from sendgrid.helpers.mail import *
 from compunetcrm.buisnesslogic.getimagesubstituitions import get_text_cordinate_substituitions,get_img_source_substituition
 from compunetcrm.forms.imageupload import ImageUploadForm, CustomerUploadForm
 from compunetcrm.forms.compose_mail import ComposeEmailForm
-from compunetcrm.models import UploadedImage, SentMail
+from compunetcrm.models import UploadedImage, SentMail, Customer
 
 sg = sendgrid.SendGridAPIClient(apikey=config('SENDGRID_API_KEY'))
 
@@ -99,5 +100,35 @@ def add_customer_information(request):
         'form': form
     })
 
+
 def testing_html(request):
-    return render(request, 'rocket_template/index.html')
+    return render(request, 'rocket_template/messages.html')
+
+
+def add_customer_information_page(request):
+    return render(request, 'rocket_template/forms.html')
+
+
+def view_mails(request):
+    sent_mails = SentMail.objects.all().select_related('image_sent')
+    return render(request, 'rocket_template/messages.html', {'sent_mail': sent_mails})
+
+
+def upload_images_page(request):
+    return render(request, 'rocket_template/forms.html')
+
+
+def send_mail_page(request):
+    return render(request, 'rocket_template/forms.html')
+
+
+def view_mail_inbox(request,pk):
+    try:
+        view_mail = SentMail.objects.get(id=pk)
+    except ObjectDoesNotExist:
+        pass
+    return render(request, 'rocket_template/view-message.html', {'view_mail': view_mail})
+
+def view_clients(request):
+    clients = Customer.objects.all()
+    return render(request,'rocket_template/clients.html', {'client':clients})

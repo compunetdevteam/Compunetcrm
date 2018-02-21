@@ -59,12 +59,16 @@ class UploadedImage(models.Model):
 
 
 class SentMail(models.Model):
+    from_email = models.CharField(max_length=255, blank=True,default='Test@example.com')
     sent_to = models.CharField(max_length=255, blank=True)
     image_address = models.CharField(max_length=255, blank=True)
     subject = models.CharField(max_length=255, blank=True)
     body = models.CharField(max_length=255, blank=True)
     status = models.CharField(max_length=255, blank=True)
-    from_email = models.CharField(max_length=255, blank=True)
+    delivery_time = models.DateTimeField(auto_now_add=True)
+    image_sent = models.ForeignKey(UploadedImage, blank=True, default=1)
+    def __str__(self):
+        return self.sent_to.capitalize() + ' ' + self.status
 
 
 class ImageTextCordinate(models.Model):

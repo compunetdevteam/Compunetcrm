@@ -2,9 +2,10 @@ from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
 from .models import Customer, SentMail, UploadedImage, ImageTextCordinate
 from import_export import resources
+from django.contrib.auth.models import Permission
 
-admin.site.site_header = '    COMPUNET EMAIL SYSTEM'
-admin.site.site_title = "     COMPUNET ENAIL SYSTEM"
+admin.site.site_header = '     EMAIL SYSTEM'
+admin.site.site_title = "      EMAIL SYSTEM"
 
 
 class CustomerResource(resources.ModelResource):
@@ -15,7 +16,7 @@ class CustomerResource(resources.ModelResource):
 class ApplicantAdmin(ImportExportModelAdmin):
     resource_class = CustomerResource
 
-
+admin.site.register(Permission)
 admin.site.register(UploadedImage)
 admin.site.register(SentMail)
 admin.site.register(ImageTextCordinate)
