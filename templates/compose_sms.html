@@ -1,21 +1,20 @@
-
 {% extends 'basetemplate/base.html' %}
 
 {% block maincontent %}
 
 
-<div class="container center-block">
-    <h1 class="text-center justify-content-center logo ">
-       Upload Image
+<div class="container">
+    <h1 class="text-center logo ">
+        <a href="#" style="color:#fde4e4;">Send Bulk Sms</a>
     </h1>
     <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10 col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" enctype="multipart/form-data" novalidate>
+                    <form method="post" novalidate>
                         {% csrf_token %}
                         {% include 'includes/form.html' %}
-                        <button type="submit" class="btn btn-primary btn-block">Upload Image</button>
+                        <button type="submit" class="btn btn-primary btn-block">Send Sms</button>
                     </form>
                 </div>
 
@@ -29,3 +28,13 @@
 {% block footer %}
     <div></div>
 {% endblock %}
+
+
+
+
+
+
+
+
+
+

@@ -4,19 +4,18 @@ from django.shortcuts import render, redirect
 import sendgrid
 from decouple import config
 from sendgrid.helpers.mail import *
+
+
 from compunetcrm.buisnesslogic.getimagesubstituitions import get_text_cordinate_substituitions,get_img_source_substituition
-from compunetcrm.forms.imageupload import ImageUploadForm, CustomerUploadForm
+from compunetcrm.buisnesslogic.send_sms import send_sms_api
+from compunetcrm.forms.AddCustomerForm import CustomerUploadForm
+from compunetcrm.forms.SendSmsForm import ComposeSmsForm
+from compunetcrm.forms.imageupload import ImageUploadForm
 from compunetcrm.forms.compose_mail import ComposeEmailForm
-from compunetcrm.models import UploadedImage, SentMail, Customer
+from compunetcrm.models import UploadedImage, SentMail, Customer, SentSms
 
 sg = sendgrid.SendGridAPIClient(apikey=config('SENDGRID_API_KEY'))
 
-
-
-
-
-def sendmail_template(request):
-    return HttpResponse("Mail Sent SuccessFully")
 
 
 def send_email_form(request):
@@ -63,10 +62,26 @@ def send_email_form(request):
                     SentMail.objects.create(image_address=image_name, subject=subject, body=body, status=response.status,
                                             from_email=from_email)
                     return HttpResponse('Failed')
-            return redirect('home')
+            return redirect('view_mail')
     else:
         form = ComposeEmailForm()
     return render(request, 'compose_mail.html', {
+        'form': form})
+
+
+def send_sms(request):
+    if request.method == 'POST':
+        form = ComposeSmsForm(request.POST)
+        if form.is_valid():
+            to = form.cleaned_data['phone_number']
+            message = form.cleaned_data['message_body']
+            success = send_sms_api(to=to, message=message)
+            if success['status'] == 'Success':
+                SentSms.objects.create(sent_to=success['number'],cost=success['cost'],message_id=success['messageId'],status=success['status'])
+            return redirect('view-mail')
+    else:
+        form = ComposeSmsForm()
+    return render(request, 'compose_sms.html', {
         'form': form
     })
 
@@ -75,12 +90,9 @@ def upolad_images(request):
     if request.method == 'POST':
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            from pprint import pprint
-            pprint(form.cleaned_data['image'].path)
-            pprint(type(form.cleaned_data['image']))
+            a = form.save()
 
-            form.save()
-            return redirect('home')
+            return redirect('view_mail')
     else:
         form = ImageUploadForm()
     return render(request, 'image_upload.html', {
@@ -101,25 +113,9 @@ def add_customer_information(request):
     })
 
 
-def testing_html(request):
-    return render(request, 'rocket_template/messages.html')
-
-
-def add_customer_information_page(request):
-    return render(request, 'rocket_template/forms.html')
-
-
 def view_mails(request):
     sent_mails = SentMail.objects.all().select_related('image_sent')
     return render(request, 'rocket_template/messages.html', {'sent_mail': sent_mails})
-
-
-def upload_images_page(request):
-    return render(request, 'rocket_template/forms.html')
-
-
-def send_mail_page(request):
-    return render(request, 'rocket_template/forms.html')
 
 
 def view_mail_inbox(request,pk):

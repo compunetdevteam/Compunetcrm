@@ -18,16 +18,14 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
-from compunetcrm.views import testing_html, view_mails
+from compunetcrm.views import view_mails
 
 urlpatterns = [
     url(r'^__debug__/', include(debug_toolbar.urls)),
     url(r'^admin/', include(admin.site.urls)),
     url(r'mail/', include('compunetcrm.urls')),
-    url(r'test/', testing_html, name='test'),
     url(r'^$', view_mails, name='messages'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

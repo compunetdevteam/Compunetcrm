@@ -48,10 +48,9 @@ class Customer(models.Model):
 
 class UploadedImage(models.Model):
     image = models.FileField(upload_to='documents/')
-    image_description = models.CharField(max_length=255, blank=True)
+    image_description = models.CharField(max_length=255)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     uploaded_by = models.CharField(max_length=25)
-    image_text_xandy_cordinate = models.CharField(max_length=300)
     image_url = models.CharField(max_length=400)
 
     def __str__(self):
@@ -82,3 +81,14 @@ class ImageTextCordinate(models.Model):
 
     def __str__(self):
         return 'Cordinates For Text Link On' + ' ' + self.imagelink.image_description + ' ' + 'Image'
+
+
+class SentSms(models.Model):
+    sent_to = models.CharField(max_length=15, verbose_name="Sent To")
+    sent_by = models.CharField(max_length=45, verbose_name="Sent By", blank=True)
+    cost = models.DecimalField(max_digits=20, decimal_places=7)
+    message_id = models.CharField(max_length=45, verbose_name="Sent By")
+    status = models.CharField(max_length=15, verbose_name="Sent To")
+
+    def __str__(self):
+        return self.sent_to + ' By ' + self.sent_by

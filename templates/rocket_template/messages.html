@@ -3,25 +3,8 @@
 {% block maincontent %}
 
     <!-- Page content -->
-    <div class="contentWrapper">
-      <div class="row">
-        <h1>Messages</h1>
-        <h4>Here you can find all your messages.</h4>
-      </div>
-      <div class="row">
-        <div class="left-panel col-md-2 col-xs-12">
-          <ul class="left-panel-list">
-            <li class="new-message"><a href="messages.html#" data-toggle="modal" data-target="#new-message"><i class="fa fa-leaf" aria-hidden="true"></i>New message</a></li>
-            <li class="inbox active"><a href="{% url 'view-mail' %}"><i class="fa fa-envelope" aria-hidden="true"></i>Sent Mails &nbsp; ({{ sent_mail.count }})</a></li>
-            <li class="drafts"><a href=""><i class="fa fa-pencil" aria-hidden="true"></i>Drafts</a></li>
-          </ul>
-          <hr>
-          <ul class="left-panel-list">
-            <li class="personal-label"><a href=""><i class="fa fa-circle" aria-hidden="true"></i>Personal</a></li>
-            <li class="employees-label"><a href=""><i class="fa fa-circle" aria-hidden="true"></i>Employees</a></li>
-            <li class="clients-label"><a href=""><i class="fa fa-circle" aria-hidden="true"></i>Clients</a></li>
-          </ul>
-        </div>
+
+
         <div class="col-md-10 col-xs-12">
           <div class="mail-box">
             <div class="right-panel">
@@ -124,22 +107,4 @@
           </div>
         </div>
       </div><!-- end .contentWrapper -->
-  <table id="table_id" class="display">
-    <thead>
-        <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-        </tr>
-        <tr>
-            <td>Row 2 Data 1</td>
-            <td>Row 2 Data 2</td>
-        </tr>
-    </tbody>
-</table>
 {% endblock %}

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'multi_email_field',
     #'storages',
+    'phonenumber_field',
 ]
 ADMIN_VIEW_PERMISSION_MODELS = [
     'auth.User',

@@ -1,13 +1,9 @@
 from django import forms
-from compunetcrm.models import UploadedImage,Customer
+from compunetcrm.models import UploadedImage
 
 
 class ImageUploadForm(forms.ModelForm):
     class Meta:
         model = UploadedImage
-        fields = ('image', 'image_description', 'image_text_xandy_cordinate',)
+        fields = ('image', 'image_description')
 
-class CustomerUploadForm(forms.ModelForm):
-    class Meta:
-        model = Customer
-        fields = ('first_name','last_name','address','customer_type','phone_number','email')
