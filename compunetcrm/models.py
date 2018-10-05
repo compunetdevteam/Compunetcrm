@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 # Create your models here.
 
 
@@ -85,10 +86,15 @@ class ImageTextCordinate(models.Model):
 
 class SentSms(models.Model):
     sent_to = models.CharField(max_length=15, verbose_name="Sent To")
+    message_body = models.CharField(max_length=800, verbose_name="Message Body", blank=True)
     sent_by = models.CharField(max_length=45, verbose_name="Sent By", blank=True)
-    cost = models.DecimalField(max_digits=20, decimal_places=7)
+    cost = models.CharField(max_length=15, verbose_name="Sms Cost")
     message_id = models.CharField(max_length=45, verbose_name="Sent By")
-    status = models.CharField(max_length=15, verbose_name="Sent To")
+    status = models.CharField(max_length=15, verbose_name="Delivery Status")
+
 
     def __str__(self):
         return self.sent_to + ' By ' + self.sent_by
+
+
+

@@ -11,7 +11,8 @@ def send_sms_api(to, message,fro=None):
     gateway = AfricasTalkingGateway(username, apikey)
     result = {}
     try:
-        results = gateway.sendMessage(to, message, from_=fro)
+        number = '+234' + to[1:]
+        results = gateway.sendMessage(number, message, from_=fro)
         for recipient in results:
             result['number'] = recipient['number']
             result['status'] = recipient['status']

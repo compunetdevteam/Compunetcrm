@@ -1,8 +1,9 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.http.response import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 import sendgrid
 from decouple import config
+from django.urls import reverse
 from sendgrid.helpers.mail import *
 
 
@@ -15,7 +16,6 @@ from compunetcrm.forms.compose_mail import ComposeEmailForm
 from compunetcrm.models import UploadedImage, SentMail, Customer, SentSms
 
 sg = sendgrid.SendGridAPIClient(apikey=config('SENDGRID_API_KEY'))
-
 
 
 def send_email_form(request):
@@ -62,7 +62,7 @@ def send_email_form(request):
                     SentMail.objects.create(image_address=image_name, subject=subject, body=body, status=response.status,
                                             from_email=from_email)
                     return HttpResponse('Failed')
-            return redirect('view_mail')
+            return redirect('view-mail')
     else:
         form = ComposeEmailForm()
     return render(request, 'compose_mail.html', {
@@ -73,12 +73,15 @@ def send_sms(request):
     if request.method == 'POST':
         form = ComposeSmsForm(request.POST)
         if form.is_valid():
-            to = form.cleaned_data['phone_number']
-            message = form.cleaned_data['message_body']
-            success = send_sms_api(to=to, message=message)
-            if success['status'] == 'Success':
-                SentSms.objects.create(sent_to=success['number'],cost=success['cost'],message_id=success['messageId'],status=success['status'])
-            return redirect('view-mail')
+            phone_number = form.cleaned_data['phone_number']
+            message_body = form.cleaned_data['message_body']
+            for to in phone_number.split(','):
+                success = send_sms_api(to=to, message=message_body)
+                if success['status'] == 'Success':
+                    SentSms.objects.create(sent_to=success['number'], message_body=message_body, cost=success['cost'], message_id=success['messageId'], status=success['status'])
+                else:
+                    SentSms.objects.create(sent_to=success['number'], message_body=message_body, cost=success['cost'], message_id=success['messageId'], status=success['status'])
+            return redirect('view-sms')
     else:
         form = ComposeSmsForm()
     return render(request, 'compose_sms.html', {
@@ -90,8 +93,7 @@ def upolad_images(request):
     if request.method == 'POST':
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            a = form.save()
-
+            form.save()
             return redirect('view_mail')
     else:
         form = ImageUploadForm()
@@ -125,6 +127,17 @@ def view_mail_inbox(request,pk):
         pass
     return render(request, 'rocket_template/view-message.html', {'view_mail': view_mail})
 
+
 def view_clients(request):
     clients = Customer.objects.all()
     return render(request,'rocket_template/clients.html', {'client':clients})
+
+
+def view_sms(request):
+    sent_sms = SentSms.objects.all()
+    return render(request, 'rocket_template/sms.html', {'sent_sms': sent_sms})
+
+
+def view_sms_inbox(request, pk):
+    view_sms = get_object_or_404(SentSms, pk=pk)
+    return render(request, 'rocket_template/view-sms.html', {'view_sms': view_sms})

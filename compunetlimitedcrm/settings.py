@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'multi_email_field',
     #'storages',
     'phonenumber_field',
+
 ]
 ADMIN_VIEW_PERMISSION_MODELS = [
     'auth.User',
@@ -69,8 +70,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
 ]
+
 
 ROOT_URLCONF = 'compunetlimitedcrm.urls'
 

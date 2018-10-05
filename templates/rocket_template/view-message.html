@@ -1,24 +1,16 @@
 {% extends 'basetemplate/base.html' %}
 {% load static %}
+{% block heading %}
+
+        <h1 style="justify-content: center;">View Sms</h1>
+
+{% endblock %}}
+
   {% block maincontent %}
     <!-- Page content -->
-    <div class="contentWrapper">
+
+
       <div class="row">
-        <h1>Messages</h1>
-        <h4>Here you can find all your messages.</h4>
-      </div>
-      <div class="row">
-        <div class="left-panel col-md-2 col-xs-12">
-          <ul class="left-panel-list">
-            <li class="new-message"><a href="view-message.html#" data-toggle="modal" data-target="#new-message"><i class="fa fa-leaf" aria-hidden="true"></i>New message</a></li>
-            <li class="sent-msg"><a href="{% url 'view-mail' %}"><i class="fa fa-paper-plane" aria-hidden="true"></i>Sent Mail</a></li>
-            <li class="drafts"><a href=""><i class="fa fa-pencil" aria-hidden="true"></i>Drafts</a></li>
-            <br><hr>
-            <li class="personal-label"><a href=""><i class="fa fa-circle" aria-hidden="true"></i>Personal</a></li>
-            <li class="employees-label"><a href=""><i class="fa fa-circle" aria-hidden="true"></i>Employees</a></li>
-            <li class="clients-label"><a href=""><i class="fa fa-circle" aria-hidden="true"></i>Clients</a></li>
-          </ul>
-        </div>
         <div class="col-md-10 col-xs-12">
           <div class="message-box">
             <div class="message-from">
@@ -46,36 +38,8 @@
             </div>
           </div>
         </div>
-          <!-- Modal -->
-          <div class="modal fade" id="new-message" role="dialog">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <span class="closeModal pull-right glyphicon glyphicon-remove" data-dismiss="modal" aria-hidden="true"></span>
-                  <h4 class="modal-title">New Message</h4>
-                </div>
-                <div class="modal-body">
 
-                  <div class="form-group row">
-                    <div class="col-sm-6 col-xs-12">
-                      <input class="form-control" placeholder="To: someone@mail.com" type="email">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-sm-6 col-xs-12">
-                      <input class="form-control" placeholder="Subject" type="text">
-                    </div>
-                  </div>
-                  <div id="summernote">Write something cool!</div>
-                </div>
-                <div class="modal-footer">
-                  <a class="send-message" href="messages.html"><i class="fa fa-share" aria-hidden="true"></i> Send message</a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
 {% endblock %}
 
 <!-- end .contentWrapper -->
