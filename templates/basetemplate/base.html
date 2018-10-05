@@ -103,10 +103,13 @@
 
 
  <div class="contentWrapper">
-        <div class="row">
+
+     <div class="row justify-content-center">
+          {% block heading %}
         <h1>Messages</h1>
-        <h4>Here you can find all your messages.</h4>
-        </div>
+        <h4>Here you can find all your sent messages.</h4>
+        {% endblock %}
+     </div>
 
       <div class="row">
         <div class="left-panel col-md-2 col-xs-12">
@@ -126,7 +129,7 @@
 
 
  </div>
-
+{{ currentpage }}
 {% block sentmaildiv %}
     <!-- Footer -->
     <footer>
@@ -140,13 +143,19 @@
               <i class="fa fa-envelope-o" aria-hidden="true"></i><br>
               <span class="hidden-xs">Send Sms</span>
             </a>
-            <a class="col-xs-2 nav-myProfile" href="{% url 'add-customer' %}">
-              <i class="fa fa-user" aria-hidden="true"></i><br>
-              <span class="hidden-xs">Add Customer Information</span>
-            </a>
+
             <a class="col-xs-2 nav-calendar" href="{% url 'view-mail' %}">
               <i class="fa fa-calendar-check-o" aria-hidden="true"></i><br>
               <span class="hidden-xs">Sent Mails</span>
+            </a>
+
+            <a class="col-xs-2 nav-calendar" href="{% url 'view-sms' %}">
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i><br>
+              <span class="hidden-xs">Sent Sms</span>
+            </a>
+            <a class="col-xs-2 nav-myProfile" href="{% url 'add-customer' %}">
+              <i class="fa fa-user" aria-hidden="true"></i><br>
+              <span class="hidden-xs">Add Customer Information</span>
             </a>
             <a class="col-xs-2 nav-users" href="{% url 'upload-images' %}">
               <i class="fa fa-users" aria-hidden="true"></i><br>
@@ -160,12 +169,21 @@
 {% endblock sentmaildiv %}
     <script type="text/javascript" src="{% static 'js/jquery-3.2.0.min.js' %}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+     <script>
+         $(function(){
+
+             $('.form-control').focus(function(){
+                 $(this).next('small').removeAttr('hidden');
+            }).blur(function(){
+                $('small#help-text').attr('hidden','hidden')
+            });
+         });
+    </script>
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <!-- Chart js -->
     <script type="text/javascript" src="{% static 'js/chart.js/Chart.bundle.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/chart.js/Chart.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/chart.js/chartJs-config.js' %}"></script>
-
     <!-- Summernote -->
     <script type="text/javascript" src="{% static 'js/summernote/summernote.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/summernote/summernoteConfig.js' %}"></script>

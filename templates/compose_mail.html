@@ -1,16 +1,15 @@
 {% extends 'basetemplate/base.html' %}
 
+{% block heading %}
+
+        <h1 style="justify-content: center;">Compose Mail</h1>
+
+{% endblock %}
+
+{#    <h1 class="text-center logo ">#}
+{#        <a href="#" style="color:#fde4e4;">Add Customer</a>#}
+{#    </h1>#}
 {% block maincontent %}
-
-
-
-    <div>
-         <h1 class="text-center logo ">
-            <a href="#" style="color:#fde4e4;">Send Customized Mail</a>
-
-        </h1>
-    </div>
-
     <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10 col-sm-12">
             <div class="card">
@@ -18,15 +17,19 @@
                     <form method="post" novalidate>
                         {% csrf_token %}
                         {% include 'includes/form.html' %}
-                        <button type="submit" class="btn btn-primary btn-block">Send Mail</button>
+                        <button type="submit" class="btn btn-primary btn-block">Send</button>
                     </form>
                 </div>
-
+                </div>
             </div>
         </div>
     </div>
-</div>
 
+
+{% endblock %}
+
+{% block footer %}
+    <div></div>
 {% endblock %}
 
 
@@ -34,13 +37,7 @@
 
 
 
-
-
-
-
-
-
-    {#  <form method="post" class="col-md-8" enctype="multipart/form-data">#}
+{#  <form method="post" class="col-md-8" enctype="multipart/form-data">#}
 {#    {% csrf_token %}#}
 {#    {% include 'includes/form.html' %}#}
 {#    <button type="submit">Send Mail</button>#}

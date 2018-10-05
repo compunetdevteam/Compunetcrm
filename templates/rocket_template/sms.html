@@ -3,7 +3,7 @@
 
 {% block heading %}
 
-        <h1 style="justify-content: center;">Sent Mails</h1>
+        <h1 style="justify-content: center;">Sent Sms</h1>
 
 {% endblock %}
 
@@ -19,12 +19,7 @@
                 <ul class="nav nav-tabs">
                   <li class="selectOptions">  
                     <span>Date:</span>
-                    <select>
-                      <option value="all">All</option>
-                      <option value="today">Today</option>
-                      <option value="yesterday">Yesterday</option>
-                      <option value="this-week">This week</option>
-                    </select>               
+
                   </li>
                   <li class="selectOptions">  
                     <span>Source:</span>
@@ -47,7 +42,9 @@
                     </div>
                   </li>            
                   <li class="messagesNumber pull-right">
+
                     <a href="messages.html#">Message <span>10</span> of 30</a>
+
                   </li>
                 </ul>
               </div>
@@ -55,26 +52,36 @@
             <div class="right-body">
               <ul class="mail-list">
 
-                {% for mails in sent_mail %}
+                {% for sms in sent_sms %}
                   <li class="mail-list-item mail-unread">
 
-                  <a href="{% url 'view-mail-inbox' mails.pk %}">
+                  <a href="{% url 'view-sms-inbox' sms.pk %}">
                     <div class="mail-info">
-                      <img src="{{ MEDIA_ROOT }}/{{ mails.image_sent.image.url }}" alt="Sent Image">
+{#                      <img src="{{ MEDIA_ROOT }}/{{ mails.image_sent.image.url }}" alt="Sent Image">#}
                       <span class="employees-label">
                         <i class="fa fa-circle" aria-hidden="true"></i>
                       </span>
-                      {{ mails.sent_to.capitalize }}
+                      {{ sms.sent_to.capitalize }}
                     </div>
                       &nbsp;
                       &nbsp;
                       &nbsp;
-                    <div class="mail-content">
-                      {{ mails.subject | truncatechars:21 }}
+                    <div class="mail-info">
+                      {{ sms.message_body | truncatechars:21 }}
                     </div>
-                    <div class="mail-time pull-right">
-                      {{ mails.delivery_time | naturaltime }}
+
+                      &nbsp;
+                      &nbsp;
+                      &nbsp;
+
+                       <div class="mail-info">
+                      {{  sms.cost }}
                     </div>
+
+                    <div class="mail-time pull-right ">
+                      {{  sms.status }}
+                    </div>
+
                   </a>
                 </li>
 
@@ -115,3 +122,5 @@
         </div>
       </div><!-- end .contentWrapper -->
 {% endblock %}
+
+

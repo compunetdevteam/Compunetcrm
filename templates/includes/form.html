@@ -25,11 +25,9 @@
             {% else %}
                 {% render_field field class="form-control " %}
             {% endif %}
-{#    {% for error in field.errors %}#}
-{##}
-{#    {% endfor %}#}
+
     {% if field.help_text %}
-      <small class="form-text">
+      <small id='help-text' hidden="hidden" class="form-text">
         {{ field.help_text|safe }}
       </small>
     {% endif %}
