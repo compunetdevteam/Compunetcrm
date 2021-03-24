@@ -61,7 +61,7 @@ pytz==2018.3
 PyYAML==3.12
 reportlab==3.4.0
 requests==2.18.4
-rsa==3.4.2
+rsa==4.1
 sendgrid==3.6.5
 sendgrid-django==4.2.0
 six==1.11.0
